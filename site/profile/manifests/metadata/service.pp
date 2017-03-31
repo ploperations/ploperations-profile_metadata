@@ -7,7 +7,7 @@
 # $owner_uid is the LDAP uid of the owner of the service. If there are multiple
 #   owners, pick one. This may only be set to `undef` temporarily.
 # $team is the team that owns the service. This should generally be infracore,
-#   re, qe, or corpsre.
+#   re, qe, or itops.
 # $end_users is an array of email addresses to notify when there are changes to
 #   the service that will be visible outside of $team. For example,
 #   all@puppet.com is appropriate for JIRA. This may only be set to `undef`
