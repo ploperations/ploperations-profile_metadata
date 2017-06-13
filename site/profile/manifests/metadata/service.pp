@@ -7,7 +7,7 @@
 # $owner_uid is the LDAP uid of the owner of the service. If there are multiple
 #   owners, pick one. This may only be set to `undef` temporarily.
 # $team is the team that owns the service. This should generally be infracore,
-#   re, qe, or itops.
+#   re, qe, or itops. This may only be set to `undef` temporarily.
 # $end_users is an array of email addresses to notify when there are changes to
 #   the service that will be visible outside of $team. For example,
 #   all@puppet.com is appropriate for JIRA. This may only be set to `undef`
@@ -28,9 +28,9 @@
 # $other_fqdns are other FQDNs that resolve to this host that are used by the
 #   service. For example, the $site_alias of a Jenkins master.
 define profile::metadata::service (
-  Optional[String[1]] $owner_uid,
-  String[1] $team,
-  Optional[Array[Pattern[/@/], 1]] $end_users,
+  Optional[String[1]] $owner_uid = undef,
+  Optional[String[1]] $team = undef,
+  Optional[Array[Pattern[/@/], 1]] $end_users = undef,
   String[1] $escalation_period = 'pdx-workhours',
   Optional[String[1]] $downtime_impact = undef,
   Optional[String[1]] $notes = undef,
