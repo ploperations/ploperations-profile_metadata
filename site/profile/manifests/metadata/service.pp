@@ -28,21 +28,21 @@
 # $other_fqdns are other FQDNs that resolve to this host that are used by the
 #   service. For example, the $site_alias of a Jenkins master.
 define profile::metadata::service (
-  Optional[String[1]] $owner_uid = undef,
-  Optional[String[1]] $team = undef,
-  Optional[Array[Pattern[/@/], 1]] $end_users = undef,
-  String[1] $escalation_period = 'pdx-workhours',
-  Optional[String[1]] $downtime_impact = undef,
-  Optional[String[1]] $notes = undef,
-  Array[String[1]] $doc_urls = [],
-  Pattern[/\A([a-z][a-z0-9_]*)?(::[a-z][a-z0-9_]*)*\Z/] $class_name = $title,
-  String[1] $human_name = $title,
-  Array[String[1]] $other_fqdns = [],
+  Optional[String[1]]                                   $owner_uid          = undef,
+  Optional[String[1]]                                   $team               = undef,
+  Optional[Array[Pattern[/@/], 1]]                      $end_users          = undef,
+  String[1]                                             $escalation_period  = 'pdx-workhours',
+  Optional[String[1]]                                   $downtime_impact    = undef,
+  Optional[String[1]]                                   $notes              = undef,
+  Array[String[1]]                                      $doc_urls           = [],
+  Pattern[/\A([a-z][a-z0-9_]*)?(::[a-z][a-z0-9_]*)*\Z/] $class_name         = $title,
+  String[1]                                             $human_name         = $title,
+  Array[String[1]]                                      $other_fqdns        = [],
 ) {
-  include ::profile::metadata
+  include profile::metadata
 
   concat::fragment { "profile::metadata::services ${title}":
-    target  => '/opt/puppetlabs/facter/facts.d/profile_metadata.yaml',
+    target  => "${profile::metadata::facts_folder}/profile_metadata.yaml",
     order   => '11',
     content => [
       {
