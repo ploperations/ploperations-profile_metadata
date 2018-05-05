@@ -41,6 +41,23 @@ define profile::metadata::service (
 ) {
   include profile::metadata
 
+  if $team {
+    $owned_by = "team ${team}"
+  } elsif $owner_uid {
+    $owned_by = $owner_uid
+  } else {
+    $owned_by = 'nobody'
+  }
+
+  include profile::metadata::service::motd_blank
+  profile::motd::fragment { "profile::metadata::service ${title}":
+    order   => '15',
+    content => @("FRAGMENT"),
+      ${human_name}
+        ${class_name} owned by ${owned_by}
+      | FRAGMENT
+  }
+
   concat::fragment { "profile::metadata::services ${title}":
     target  => "${profile::metadata::facts_folder}/profile_metadata.yaml",
     order   => '11',
