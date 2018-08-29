@@ -49,6 +49,12 @@ define profile::metadata::service (
     $owned_by = 'nobody'
   }
 
+  if $owned_by == 'nobody' {
+    $owned = false
+  } else {
+    $owned = true
+  }
+
   include profile::metadata::service::motd_blank
   profile::motd::fragment { "profile::metadata::service ${title}":
     order   => '15',
@@ -73,6 +79,7 @@ define profile::metadata::service (
         notes             => $notes,
         doc_urls          => $doc_urls,
         other_fqdns       => $other_fqdns,
+        owned             => $owned,
       },
       # to_yaml outputs multiline strings with | so indenting is safe
     ].to_yaml().regsubst("^---", "", "G").regsubst("^", "    ", "G"),
