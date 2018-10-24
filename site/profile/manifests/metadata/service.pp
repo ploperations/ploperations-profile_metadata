@@ -82,6 +82,6 @@ define profile::metadata::service (
         owned             => $owned,
       },
       # to_yaml outputs multiline strings with | so indenting is safe
-    ].to_yaml().regsubst("^---", "", "G").regsubst("^", "    ", "G"),
+    ].to_yaml().regsubst('^---', '', 'G').regsubst('^', '    ', 'G'),
   }
 }
