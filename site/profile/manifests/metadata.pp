@@ -5,8 +5,8 @@ class profile::metadata() {
     'windows': {
       $common_appdata_dir = regsubst($facts['puppet_agent_appdata'], '\\\\', '/')
       $facts_folder       = "${common_appdata_dir}/PuppetLabs/facter/facts.d"
-      $admin_user         = 'puppetlabs\Administrator'
-      $admin_group        = 'puppetlabs\Domain Users'
+      $admin_user         = 'Administrator'
+      $admin_group        = 'Administrators'
     }
     default: {
       $facts_folder = '/opt/puppetlabs/facter/facts.d'
