@@ -1,5 +1,5 @@
-# Support defining metadata for a node (e.g profile::metadata::service)
-class profile::metadata() {
+# Support defining metadata for a node (e.g profile_metadata::service)
+class profile_metadata() {
 
   case $facts['os']['family'] {
     'windows': {
@@ -21,13 +21,13 @@ class profile::metadata() {
     mode  => '0444',
   }
 
-  concat::fragment { 'profile::metadata header':
+  concat::fragment { 'profile_metadata header':
     target  => "${facts_folder}/profile_metadata.yaml",
     order   => '00',
     content => "---\nprofile_metadata:\n",
   }
 
-  concat::fragment { 'profile::metadata services header':
+  concat::fragment { 'profile_metadata services header':
     target  => "${facts_folder}/profile_metadata.yaml",
     order   => '10',
     content => "  services:\n",

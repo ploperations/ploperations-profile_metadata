@@ -27,7 +27,7 @@
 #   "Internal InfraCore CI".
 # $other_fqdns are other FQDNs that resolve to this host that are used by the
 #   service. For example, the $site_alias of a Jenkins master.
-define profile::metadata::service (
+define profile_metadata::service (
   Optional[String[1]]                                   $owner_uid          = undef,
   Optional[String[1]]                                   $team               = undef,
   Optional[Array[Pattern[/@/], 1]]                      $end_users          = undef,
@@ -39,7 +39,7 @@ define profile::metadata::service (
   String[1]                                             $human_name         = $title,
   Array[String[1]]                                      $other_fqdns        = [],
 ) {
-  include profile::metadata
+  include profile_metadata
 
   if $team {
     $owned_by = "team ${team}"
@@ -55,8 +55,8 @@ define profile::metadata::service (
     $owned = true
   }
 
-  include profile::metadata::service::motd_blank
-  profile::motd::fragment { "profile::metadata::service ${title}":
+  include profile_metadata::service::motd_blank
+  profile::motd::fragment { "profile_metadata::service ${title}":
     order   => '15',
     content => @("FRAGMENT"),
       ${human_name}
@@ -64,8 +64,8 @@ define profile::metadata::service (
       | FRAGMENT
   }
 
-  concat::fragment { "profile::metadata::services ${title}":
-    target  => "${profile::metadata::facts_folder}/profile_metadata.yaml",
+  concat::fragment { "profile_metadata::services ${title}":
+    target  => "${profile_metadata::facts_folder}/profile_metadata.yaml",
     order   => '11',
     content => [
       {
