@@ -56,7 +56,7 @@ define profile_metadata::service (
   }
 
   include profile_metadata::service::motd_blank
-  profile::motd::fragment { "profile_metadata::service ${title}":
+  meta_motd::fragment { "profile_metadata::service ${title}":
     order   => '15',
     content => @("FRAGMENT"),
       ${human_name}
