@@ -1,87 +1,34 @@
 # profile_metadata
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://puppet.com/pdk/latest/pdk_generating_modules.html .
+![](https://img.shields.io/puppetforge/pdk-version/ploperations/profile_metadata.svg?style=popout)
+![](https://img.shields.io/puppetforge/v/ploperations/profile_metadata.svg?style=popout)
+![](https://img.shields.io/puppetforge/dt/ploperations/profile_metadata.svg?style=popout)
+[![Build Status](https://travis-ci.org/ploperations/ploperations-profile_metadata.svg?branch=master)](https://travis-ci.com/ploperations/ploperations-profile_metadata)
 
-The README template below provides a starting point with details about what information to include in your README.
-
-#### Table of Contents
-
-1. [Description](#description)
-2. [Setup - The basics of getting started with profile_metadata](#setup)
-    * [What profile_metadata affects](#what-profile_metadata-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with profile_metadata](#beginning-with-profile_metadata)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
+- [Description](#description)
+- [Usage](#usage)
+- [Reference](#reference)
+- [Changelog](#changelog)
+- [Development](#development)
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your module does and what kind of problems users can solve with it.
+profile_metadata allows you to define information about a service within the profile that configures it. The information resulting from all the services included in a role are combined and presented as a structured fact on the host. The service's title and what profile it came from are also added the the message of the day (MOTD).
 
-This should be a fairly short description helps the user decide if your module is what they want.
-
-## Setup
-
-### What profile_metadata affects **OPTIONAL**
-
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
-
-### Beginning with profile_metadata
-
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+This module is used extensively inside Puppet to provide information directly on each host and to put data into PuppetDB that is then consumed by other services.
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your users how to use your module to solve problems, and be sure to include code examples. Include three to five examples of the most important or common tasks a user can accomplish with your module. Show users how to accomplish more complex tasks that involve different types, classes, and functions working in tandem.
+This module provides a defined type named `profile_metadata::service` that you can include like any other resource in each profile.
 
 ## Reference
 
-This section is deprecated. Instead, add reference information to your code as Puppet Strings comments, and then use Strings to generate a REFERENCE.md in your module. For details on how to add code comments and generate documentation with Strings, see the Puppet Strings [documentation](https://puppet.com/docs/puppet/latest/puppet_strings.html) and [style guide](https://puppet.com/docs/puppet/latest/puppet_strings_style.html)
+This module is documented via `pdk bundle exec puppet strings generate --format markdown`. Please see [Reference](https://forge.puppet.com/ploperations/profile_metadata/reference) on the Puppet Forge or [REFERENCE.md](REFERENCE.md) on GitHub for more info.
 
-If you aren't ready to use Strings yet, manually create a REFERENCE.md in the root of your module directory and list out each of your module's classes, defined types, facts, functions, Puppet tasks, task plans, and resource types and providers, along with the parameters for each.
+## Changelog
 
-For each element (class, defined type, function, and so on), list:
-
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
-
-For example:
-
-```
-### `pet::cat`
-
-#### Parameters
-
-##### `meow`
-
-Enables vocalization in your cat. Valid options: 'string'.
-
-Default: 'medium-loud'.
-```
-
-## Limitations
-
-In the Limitations section, list any incompatibilities, known issues, or other warnings.
+[CHANGELOG.md](CHANGELOG.md) is generated prior to each release via `pdk bundle exec rake changelog`. This process relies on labels that are applied to each pull request.
 
 ## Development
 
-In the Development section, tell other users the ground rules for contributing to your project and how they should submit their work.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
+Pull requests are welcome!

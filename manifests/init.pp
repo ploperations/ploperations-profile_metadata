@@ -1,5 +1,9 @@
+# @summary Support defining metadata for a node (e.g profile_metadata::service)
+#
 # Support defining metadata for a node (e.g profile_metadata::service)
-class profile_metadata() {
+#
+# @api private
+class profile_metadata {
 
   case $facts['os']['family'] {
     'windows': {
