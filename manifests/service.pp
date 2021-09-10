@@ -37,17 +37,21 @@
 #   "Development work will be blocked because their changes cannot be tested
 #   and thus cannot be merged." Use multiple lines and markdown as appropriate.
 #
-# @param Optional[String[1]] notes
+# @param [Optional[String[1]]] notes
 #   General notes for things not covered elsewhere. Use multiple lines
 #   and markdown as appropriate.
 #
-# @param Array[String[1]] doc_urls
+# @param [Array[String[1]]] doc_urls
 #   An array of URLs to documentation (e.g. Confluence).
 #
-# @param String[1] human_name is a human friendly name for the service. For example,
+# @param [Pattern[/\A([a-z][a-z0-9_]*)?(::[a-z][a-z0-9_]*)*\Z/]] class_name
+#   The Puppet class the metadata is associated with
+#
+# @param [String[1]] human_name
+#   a human friendly name for the service. For example,
 #   "Internal InfraCore CI".
 #
-# @param Array[String[1]] other_fqdns 
+# @param [Array[String[1]]] other_fqdns 
 #   Other FQDNs that resolve to this host that are used by the
 #   service. For example, the $site_alias of a Jenkins master.
 #
@@ -119,13 +123,15 @@ define profile_metadata::service (
   }
 
   include profile_metadata::service::motd_blank
+  # lint:ignore:strict_indent
   meta_motd::fragment { "profile_metadata::service ${title}":
     order   => '15',
     content => @("FRAGMENT"),
-      ${human_name}
+            ${human_name}
         ${class_name} owned by ${owned_by}
       | FRAGMENT
   }
+  # lint:endignore
 
   concat::fragment { "profile_metadata::services ${title}":
     target  => "${profile_metadata::facts_folder}/profile_metadata.yaml",
