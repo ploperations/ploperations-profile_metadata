@@ -4,7 +4,6 @@
 #
 # @api private
 class profile_metadata {
-
   case $facts['os']['family'] {
     'windows': {
       $common_appdata_dir = regsubst($facts['puppet_agent_appdata'], '\\\\', '/')
