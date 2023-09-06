@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [1.1.0](https://github.com/ploperations/ploperations-profile_metadata/tree/1.1.0) (2023-09-06)
+
+[Full Changelog](https://github.com/ploperations/ploperations-profile_metadata/compare/1.0.0...1.1.0)
+
+### Added
+
+- PDK 3 teamplates and standards update [\#4](https://github.com/ploperations/ploperations-profile_metadata/pull/4) ([yachub](https://github.com/yachub))
+
+### Fixed
+
+- Fix macOS compatibility [\#5](https://github.com/ploperations/ploperations-profile_metadata/pull/5) ([yachub](https://github.com/yachub))
+
 ## [1.0.0](https://github.com/ploperations/ploperations-profile_metadata/tree/1.0.0) (2021-09-18)
 
 [Full Changelog](https://github.com/ploperations/ploperations-profile_metadata/compare/e42cee45d291f6c9c041a661e636a045cd0aaca5...1.0.0)
