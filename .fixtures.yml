@@ -3,8 +3,12 @@
 ---
 fixtures:
   forge_modules:
-    concat: 'puppetlabs/concat'
+    concat:
+      repo: 'puppetlabs/concat'
+      ref: '8.0.1'
     puppet_agent: 'puppetlabs/puppet_agent'
-    stdlib: 'puppetlabs/stdlib'
+    stdlib:
+      repo: 'puppetlabs/stdlib'
+      ref: '8.2.0'
   repositories:
     meta_motd: 'https://github.com/ploperations/ploperations-meta_motd.git'
