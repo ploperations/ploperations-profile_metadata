@@ -5,6 +5,11 @@
 # @api private
 class profile_metadata {
   case $facts['os']['family'] {
+    'Darwin': {
+      $facts_folder = '/opt/puppetlabs/facter/facts.d'
+      $admin_user   = 'root'
+      $admin_group  = 'wheel'
+    }
     'windows': {
       $common_appdata_dir = regsubst($facts['puppet_agent_appdata'], '\\\\', '/')
       $facts_folder       = "${common_appdata_dir}/PuppetLabs/facter/facts.d"
