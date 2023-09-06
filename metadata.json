@@ -1,6 +1,6 @@
 {
   "name": "ploperations-profile_metadata",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "ploperations",
   "summary": "Allows you to define information about a service within the profile that configures it",
   "license": "Apache-2.0",
