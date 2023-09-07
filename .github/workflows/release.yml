@@ -5,3 +5,4 @@ on: workflow_dispatch
 jobs:
   publish-module:
     uses: ploperations/repo_standards/.github/workflows/release.yml@main
+    secrets: inherit
